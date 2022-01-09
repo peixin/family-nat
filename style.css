@@ -1,0 +1,66 @@
+body {
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100vw;
+  height: 100vh;
+}
+
+.swiper-slide,img {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-slide .info-404 {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  word-break: break-all;
+  background: #e2e1e4;
+  white-space: pre-line;
+}
+
+.user-info {
+  position: fixed;
+  top: 0;
+  background-image: linear-gradient(#c6dfc8, #e2e1e4);
+  width: 100vw;
+  padding: 1rem 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #363433;
+}
+
+.user-info .members {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.user-info .members .current {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #373834;
+  text-shadow: -1px -1px #fbc82f;
+}
+
+.user-info .user-counts {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+}
+

@@ -1,0 +1,8 @@
+export const usersInfo = {
+  wangyangming: { name: "王阳明" },
+  noname: { name: "无名氏", noQRCode: true, id: "541560198001011454" },
+};
+
+export const familyInfo = {
+  members: ["wangyangming", "noname"],
+};
