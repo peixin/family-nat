@@ -9,6 +9,7 @@
   "private": false,
   "description": "Family nucleic acid test util",
   "scripts": {
+    "result": "node ./get-result.js",
     "build": "cp node_modules/swiper/swiper-bundle.esm.browser.min.* ./js; cp node_modules/swiper/swiper-bundle.min.css ./css"
   },
   "devDependencies": {
