@@ -54,6 +54,12 @@ img {
   flex-wrap: wrap;
 }
 
+.user-info .members>span {
+  height: 2.56rem;
+  display: inline-flex;
+  align-items: flex-end;
+}
+
 .user-info .members .current {
   font-size: 1.8rem;
   font-weight: bold;

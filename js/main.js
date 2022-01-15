@@ -56,7 +56,7 @@ const initSlides = () => {
     if (usersInfo[member].noQRCode) {
       element = document.createElement("div");
       const img = document.createElement("img");
-      img.src = `./qr-codes/404.jpeg`;
+      img.src = `./qr-codes/404.jpeg?v=${window.appVersion}`;
 
       const userId = usersInfo[member].id;
       const span = document.createElement("span");
@@ -67,7 +67,7 @@ const initSlides = () => {
       element.append(span);
     } else {
       element = document.createElement("img");
-      element.src = `./qr-codes/${member}.jpeg`;
+      element.src = `./qr-codes/${member}.jpeg?v=${window.appVersion}`;
     }
 
     element.className = "swiper-slide";

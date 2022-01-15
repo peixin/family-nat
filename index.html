@@ -5,10 +5,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <script type="text/javascript">window.appVersion = "0.0.1"</script>
+  <script type="text/javascript">
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch((err) => console.log('ServiceWorker registration failed:', err));
+    }
+  </script>
+  <script type="text/javascript">
+    document.write(`<link rel="manifest" href="./manifest.json?v=${appVersion}" />`);
+    document.write(`<link rel="stylesheet" href="./css/swiper-bundle.min.css?v=${appVersion}" />`);
+    document.write(`<link rel="stylesheet" href="./css/style.css?v=${appVersion}" />`);
+  </script>
   <title>家庭核酸检测亮码</title>
-  <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <script type="module" src="./js/main.js"></script>
 </head>
 
 <body>
@@ -21,6 +32,9 @@
     <div class="swiper-wrapper"></div>
     <div class="swiper-pagination"></div>
   </div>
+  <script type="text/javascript">
+    document.write(`<script type="module" src="./js/main.js?v=${appVersion}" />`);
+  </script>
 </body>
 
 </html>
