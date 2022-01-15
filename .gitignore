@@ -197,3 +197,5 @@ qr-codes/*
 !qr-codes/404.jpeg
 
 data.js
+js/swiper-bundle.*
+css/swiper-bundle.min.css

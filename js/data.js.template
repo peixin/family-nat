@@ -1,5 +1,5 @@
 export const usersInfo = {
-  wangyangming: { name: "王阳明" },
+  wangyangming: { name: "王守仁", displayName: "王阳明", "541560198001011452" },
   noname: { name: "无名氏", noQRCode: true, id: "541560198001011454" },
 };
 

@@ -8,11 +8,12 @@ body {
 }
 
 .swiper {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
-.swiper-slide,img {
+.swiper-slide,
+img {
   width: 100%;
   height: auto;
 }
@@ -33,9 +34,10 @@ body {
   position: fixed;
   top: 0;
   background-image: linear-gradient(#c6dfc8, #e2e1e4);
-  width: 100vw;
+  width: 100%;
+  left: 0;
   padding: 1rem 0;
-  z-index: 9999;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +50,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
 }
 
@@ -56,11 +58,9 @@ body {
   font-size: 1.8rem;
   font-weight: bold;
   color: #373834;
-  text-shadow: -1px -1px #fbc82f;
 }
 
 .user-info .user-counts {
   margin-top: 0.2rem;
   font-size: 0.8rem;
 }
-

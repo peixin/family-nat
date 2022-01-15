@@ -1,4 +1,4 @@
-import Swiper from "https://unpkg.com/swiper@7/swiper-bundle.esm.browser.min.js";
+import Swiper from "./swiper-bundle.esm.browser.min.js";
 import { usersInfo, familyInfo } from "./data.js";
 
 let swiper;
@@ -25,7 +25,7 @@ const setMembersName = () => {
 
   familyInfo.members.forEach((member, index) => {
     const span = document.createElement("span");
-    span.textContent = usersInfo[member].name;
+    span.textContent = usersInfo[member].displayName || usersInfo[member].name;
     if (index === 0) {
       span.className = "current";
     }
@@ -33,6 +33,18 @@ const setMembersName = () => {
   });
 
   membersContainer.appendChild(fragment);
+};
+
+const formatReadableUserId = (userId) => {
+  const idSplitIndex = [6, 4, 4, 4];
+
+  return idSplitIndex
+    .reduce((arr, size) => {
+      const start = arr.join("").length;
+      arr.push(userId.substring(start, start + size));
+      return arr;
+    }, [])
+    .join(" ");
 };
 
 const initSlides = () => {
@@ -46,8 +58,9 @@ const initSlides = () => {
       const img = document.createElement("img");
       img.src = `./qr-codes/404.jpeg`;
 
+      const userId = usersInfo[member].id;
       const span = document.createElement("span");
-      span.textContent = `暂无二维码\n身份证号:\n${usersInfo[member].id}`;
+      span.textContent = `暂无二维码\n身份证号:\n${formatReadableUserId(userId)}`;
       span.className = "info-404";
 
       element.append(img);

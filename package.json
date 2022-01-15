@@ -1,0 +1,21 @@
+{
+  "name": "family-nat",
+  "version": "1.0.0",
+  "main": "index.html",
+  "type": "module",
+  "repository": "git@github.com:peixin/family-nat.git",
+  "author": "liupeixin <fengyi.mail@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "description": "Family nucleic acid test util",
+  "scripts": {
+    "build": "cp node_modules/swiper/swiper-bundle.esm.browser.min.* ./js; cp node_modules/swiper/swiper-bundle.min.css ./css"
+  },
+  "devDependencies": {
+    "axios": "^0.24.0",
+    "swiper": "^7.4.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
