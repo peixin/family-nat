@@ -1,4 +1,5 @@
 import Swiper from "./swiper-bundle.esm.browser.min.js";
+import { getData } from "./db.js";
 
 const formatReadableUserId = (userId) => {
   const idSplitIndex = [6, 4, 4, 4];
@@ -51,12 +52,14 @@ export const showCode = (familyData) => {
     membersContainer.appendChild(fragment);
   };
 
-  const initSlides = () => {
+  const initSlides = (qrCodes) => {
     const fragment = document.createDocumentFragment();
 
-    Object.keys(familyData).forEach((userId) => {
+    Object.keys(familyData).forEach((userId, index) => {
       let element;
-      if (familyData[userId].noQRCode) {
+      const base64Data = qrCodes[index];
+
+      if (!base64Data || familyData[userId].noQRCode) {
         element = document.createElement("div");
         const img = document.createElement("img");
         img.src = `./images/404.jpeg?v=${window.appVersion}`;
@@ -69,7 +72,7 @@ export const showCode = (familyData) => {
         element.append(span);
       } else {
         element = document.createElement("img");
-        element.src = localStorage.getItem(`id_${userId}`);
+        element.src = base64Data;
       }
 
       element.className = "swiper-slide";
@@ -104,8 +107,10 @@ export const showCode = (familyData) => {
     });
   };
 
-  initSlides();
-  initSwiper();
-  setCountInfo(0);
-  setMembersName();
+  Promise.all(Object.keys(familyData).map((id) => getData(id))).then((qrCodes) => {
+    initSlides(qrCodes);
+    initSwiper();
+    setCountInfo(0);
+    setMembersName();
+  });
 };

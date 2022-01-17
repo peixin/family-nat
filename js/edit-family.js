@@ -1,3 +1,5 @@
+import { saveData } from "./db.js";
+
 export const showEditFamily = (familyData) => {
   const listUserContainer = document.querySelector(".user-list");
 
@@ -26,11 +28,7 @@ export const showEditFamily = (familyData) => {
 
     const userId = userIdInput.value.trim();
 
-    try {
-      localStorage.setItem(`id_${userId}`, reader.result);
-    } catch (e) {
-      console.log("Storage failed: " + e);
-    }
+    saveData(userId, reader.result);
   };
 
   imageInput.addEventListener("change", (event) => {

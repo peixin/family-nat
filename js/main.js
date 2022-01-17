@@ -1,3 +1,4 @@
+import { init as initDB } from "./db.js";
 import { showEditFamily } from "./edit-family.js";
 import { showCode } from "./show-code.js";
 
@@ -33,4 +34,4 @@ const init = () => {
   }
 };
 
-init();
+initDB().then(() => init()).catch(() => alert("init error"));
