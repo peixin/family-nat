@@ -23,14 +23,33 @@
 </head>
 
 <body>
-
-  <div class="user-info">
+  <div class="user-info hidden">
     <div class="members" id="members"></div>
-    <div class="user-counts">家庭人数: <span id="userCounts"></span></div>
+    <div class="user-counts">家庭人数: <span id="userCounts">0</span></div>
+    <div class="options">
+      <button onclick="toEditFamily()">编辑家庭人员</button>
+      <button>查询核酸结果</button>
+    </div>
   </div>
-  <div class="swiper">
+  <div class="swiper hidden">
     <div class="swiper-wrapper"></div>
     <div class="swiper-pagination"></div>
+  </div>
+  <div class="edit-family hidden">
+    <div id="edit-family-form" class="edit-family-form">
+      <div class="line1">
+        <input class="user-name" placeholder="姓名" type="text" maxlength="10" />
+        <input class="user-id" placeholder="身份证" type="text" maxlength="18" />
+      </div>
+      <div class="line2">
+        <label for="userQrCode">点击上传健康码截图</label>
+        <input id="userQrCode" type="file" accept="image/*" hidden />
+        <button id="addUserButton">添加此人</button>
+        <button onclick="window.location.reload()">去亮码</button>
+      </div>
+      <img class="preview hidden">
+    </div>
+    <div class="user-list"></div>
   </div>
   <script type="text/javascript">
     document.write(`<script type="module" src="./js/main.js?v=${appVersion}" />`);

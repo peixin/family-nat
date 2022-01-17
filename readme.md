@@ -7,9 +7,11 @@ Family nucleic acid test
 
 遂，做了个这个小页面。
 
+### 功能
 
-`mv data.js.template data.js`
+- 编辑家庭人员，数据图片本地保存，离线使用
+- 滑动顺序展示二维码
+- 查看核酸结果
 
-qr-codes 里存放每个人的二维码截图，注意命名和 data.js 里的 key 对应。
-
-对于没有二维码的人，可以设置 `noQRCode, id` 展示身份证号
+![show code](./images/show-code.jpg)
+![edit family](./images/edit-family.jpg)
