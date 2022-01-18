@@ -1,0 +1,4 @@
+export const familyInfo = {
+  "541560198001011452": { name: "王守仁", displayName: "王阳明", noQRCode: false, id: "541560198001011452" },
+  "541560198001011454": { name: "无名氏", noQRCode: true, id: "541560198001011454" },
+};
