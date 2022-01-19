@@ -15,3 +15,15 @@ Family nucleic acid test
 
 ![show code](./images/show-code.jpg)
 ![edit family](./images/edit-family.jpg)
+
+### use [Cloudflare Worker](https://developers.cloudflare.com/workers/) to proxy api
+```
+wrangler secret put API_TOKEN
+wrangler secret put NAAT_UUID
+wrangler secret put NAAT_PRIVATE_KEY
+
+// cp & edit wrangler.toml
+cp wrangler.toml.template wrangler.toml
+
+wrangler publish
+```

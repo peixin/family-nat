@@ -198,3 +198,6 @@ qr-codes
 js/data.js
 js/swiper-bundle.*
 css/swiper-bundle.min.css
+
+cloudflare-worker/crypto-js
+wrangler.toml
