@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import axios from "axios";
 import crypto from "crypto";
-import { familyInfo } from "./js/data.js";
+import { familyInfo } from "./data.js";
 import { fileURLToPath } from "url";
 
 dotenv.config();
@@ -12,18 +12,22 @@ dotenv.config();
 const UUID = process.env.UUID;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
-const parseResult = ({ data }) => {
+const parseResult = (_userName, { data }) => {
+  const userName = _userName.padEnd(3, "　");
   if (!data || !data.length) {
-    console.error("response empty data");
+    console.error(userName, "response empty data");
     return;
   }
-  const item = data[0];
-  const userName = item.name.padEnd(3, "　");
-  if (item.detResult === "1") {
-    console.log(userName, item.collectTime, "阴性");
-  } else {
-    console.log(userName, item.collectTime, item.detResult, "💥💥💥");
+
+  console.log(_userName);
+  for (let item of data) {
+    if (item.detResult === "1") {
+      console.log("  ", item.collectTime, "阴性");
+    } else {
+      console.log("  ", item.collectTime, item.detResult, "💥💥💥");
+    }
   }
+  console.log();
 };
 
 const sign = (text) => {
@@ -73,15 +77,7 @@ const getNATResult = async (userName, userId) => {
 
   try {
     const { data } = await axios(options);
-
-    // const item = {
-    //   name: userName,
-    //   detResult: "1",
-    //   collectTime: "2022-01-11 10:07:07",
-    // };
-    // parseResult({ data: [item] });
-
-    parseResult(data);
+    parseResult(userName, data);
   } catch (error) {
     console.error(error);
   }
