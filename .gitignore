@@ -196,8 +196,8 @@ dist
 
 qr-codes
 data.js
-js/swiper-bundle.*
-css/swiper-bundle.min.css
+# js/swiper-bundle.*
+# css/swiper-bundle.min.css
 
 cloudflare-worker/crypto-js
 wrangler.toml

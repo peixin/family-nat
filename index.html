@@ -9,7 +9,7 @@
   <script type="text/javascript">
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
-        .register('/service-worker.js')
+        .register('./service-worker.js')
         .then(() => console.log('Service Worker Registered'))
         .catch((err) => console.log('ServiceWorker registration failed:', err));
     }
@@ -52,7 +52,7 @@
     <div class="user-list"></div>
   </div>
   <script type="text/javascript">
-    document.write(`<script type="module" src="./js/main.js?v=${appVersion}" />`);
+    document.write(`<script type="module" src="./js/main.js?v=${appVersion}" ></script>`);
   </script>
 </body>
 
