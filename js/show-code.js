@@ -13,10 +13,11 @@ const formatReadableUserId = (userId) => {
     .join(" ");
 };
 
-export const showCode = (familyData) => {
+export const showCode = (familyData, getNATResult) => {
   let swiper;
   const swiperContainer = document.querySelector(".swiper-wrapper");
   const userInfoContainer = document.querySelector(".user-info");
+  window.getNATResult = () => getNATResult(familyData[Object.keys(familyData)[0]]);
 
   const setCountInfo = (currentIndex) => {
     userInfoContainer.querySelector("#userCounts").textContent = `${currentIndex + 1} / ${
@@ -104,6 +105,7 @@ export const showCode = (familyData) => {
       const currentSpan = userInfoContainer.querySelector(".members>.current");
       currentSpan.classList.remove("current");
       userInfoContainer.querySelectorAll(".members>span")[swiper.realIndex].classList.add("current");
+      window.getNATResult = () => getNATResult(familyData[Object.keys(familyData)[swiper.realIndex]]);
     });
   };
 

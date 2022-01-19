@@ -30,10 +30,13 @@ const getNATResult = async (userName, userId) => {
       .join("")
   );
 
-  const queryParams = `name=${encodeURIComponent(userName)}&cardNum=${encodeURIComponent(userId)}`;
+  const url = new URL("https://yqpt.xa.gov.cn/prod-api/naat/open/api/getResultByCardNumAndName");
+  url.searchParams.set("name", userName);
+  url.searchParams.set("cardNum", userId);
+
   const options = {
     method: "POST",
-    url: `https://yqpt.xa.gov.cn/prod-api/naat/open/api/getResultByCardNumAndName?${queryParams}`,
+    url,
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
       Host: "yqpt.xa.gov.cn",
@@ -57,7 +60,7 @@ const getNATResult = async (userName, userId) => {
 
 exports.main_handler = async (event, context) => {
   const { name, id } = event.queryString;
-  if (!name && !id) {
+  if (!name || !id) {
     return {
       statusCode: 400,
       body: "no params",
@@ -66,7 +69,7 @@ exports.main_handler = async (event, context) => {
   if (event.headers["api-token"] !== process.env.API_TOKEN) {
     return {
       statusCode: 401,
-      body: "auto failed",
+      body: "auth failed",
     };
   }
   return await getNATResult(name, id);

@@ -13,6 +13,56 @@ const toEditFamily = (familyData) => {
   showEditFamily(familyData);
 };
 
+const getNATResult = async ({name, id}) => {
+  let naatURL = localStorage.getItem("naat-api-url");
+  let naatToken = localStorage.getItem("naat-api-token");
+  let text = "";
+  if (!naatURL) {
+    text = (prompt("输入你的 NAAT 代理地址:") || "").trim();
+    if (!text) {
+      alert("no nnat url");
+      return;
+    }
+    naatURL = text;
+    localStorage.setItem("naat-api-url", text);
+  }
+  if (!naatURL) {
+    text = (prompt("输入你的 NAAT 代理 TOKEN:") || "").trim();
+    if (!text) {
+      alert("no nnat token");
+      return;
+    }
+    naatToken = text;
+    localStorage.setItem("naat-api-token", text);
+  }
+
+  const options = {
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      "api-token": naatToken,
+    },
+  };
+
+  try {
+    const url = new URL(naatURL);
+    url.searchParams.set("name", name);
+    url.searchParams.set("id", id);
+
+    const responseData = JSON.parse(await fetch(url, options).then((response) => response.json()));
+    let message = name + "\n";
+    console.log(responseData);
+
+    message += responseData.data
+      .map((item) => `${item.collectTime} ${item.detResult === "1" ? "阴性" : `${item.detResult} 💥💥💥`}`)
+      .join("\n");
+
+    alert(message);
+  } catch (error) {
+    console.error(error);
+    alert(error);
+  }
+};
+
 const init = () => {
   let familyData = {};
   try {
@@ -28,10 +78,12 @@ const init = () => {
     userInfoContainer.classList.remove("hidden");
     swiperContainer.classList.remove("hidden");
     editFamilyContainer.classList.add("hidden");
-    showCode(familyData);
+    showCode(familyData, getNATResult);
   } else {
     toEditFamily(familyData);
   }
 };
 
-initDB().then(() => init()).catch(() => alert("init error"));
+initDB()
+  .then(() => init())
+  .catch(() => alert("init error"));
