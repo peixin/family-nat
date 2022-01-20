@@ -1,4 +1,4 @@
-const version = "0.0.3";
+const version = "0.0.4";
 const cacheName = `site-cache-v${version}`;
 const filesToCache = ["/"];
 
