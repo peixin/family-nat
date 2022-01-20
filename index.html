@@ -13,11 +13,29 @@
         .then(() => console.log('Service Worker Registered'))
         .catch((err) => console.log('ServiceWorker registration failed:', err));
     }
-  </script>
-  <script type="text/javascript">
-    document.write(`<link rel="manifest" href="./manifest.json?v=${appVersion}" />`);
-    document.write(`<link rel="stylesheet" href="./css/swiper-bundle.min.css?v=${appVersion}" />`);
-    document.write(`<link rel="stylesheet" href="./css/style.css?v=${appVersion}" />`);
+
+    const linkManifest = document.createElement("link")
+    linkManifest.setAttribute("ref", "manifest")
+    linkManifest.setAttribute("href", `./manifest.json?v=${appVersion}`)
+    document.head.appendChild(linkManifest);
+
+    const linkCssStyle = document.createElement("link")
+    linkCssStyle.setAttribute("rel", "stylesheet")
+    linkCssStyle.setAttribute("href", `./css/style.css?v=${appVersion}`)
+    document.head.appendChild(linkCssStyle);
+
+    const linkCssSwiper = document.createElement("link")
+    linkCssSwiper.setAttribute("rel", "stylesheet")
+    linkCssSwiper.setAttribute("href", `./css/swiper-bundle.min.css?v=${appVersion}`)
+    document.head.appendChild(linkCssSwiper);
+
+    window.onload = () => {
+      const script = document.createElement("script")
+      script.setAttribute("type", "module")
+      script.setAttribute("src", `./js/main.js?v=${appVersion}`)
+      document.body.appendChild(script);
+    }
+
   </script>
   <title>家庭核酸检测亮码</title>
 </head>
@@ -51,9 +69,6 @@
     </div>
     <div class="user-list"></div>
   </div>
-  <script type="text/javascript">
-    document.write(`<script type="module" src="./js/main.js?v=${appVersion}" ></script>`);
-  </script>
 </body>
 
 </html>

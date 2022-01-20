@@ -7,11 +7,12 @@
 > 
 > 遂，做了个这个小页面。
 
-## 功能
 
+## 功能
 - 编辑家庭人员，数据图片本地保存，离线使用
 - 滑动顺序展示二维码
 - 在线/本地 查看核酸结果
+
 
 ## use [Cloudflare Worker](https://developers.cloudflare.com/workers/) to proxy api
 ```
@@ -25,6 +26,7 @@ cp wrangler.toml.template wrangler.toml
 wrangler publish
 ```
 
+
 ## use [腾讯云 云函数](https://cloud.tencent.com/document/product/583) to proxy api
 Environment Variables
 ```
@@ -33,6 +35,7 @@ PRIVATE_KEY=
 UUID=
 ```
 Code: `tencent-scf/index.js`
+
 
 ## 本地批量查询结果
 ```
@@ -44,3 +47,22 @@ node get-result.js
 
 ![show code](./images/show-code.jpg)
 ![edit family](./images/edit-family.jpg)
+
+
+## Practice technical points
+- Progressive Web Apps
+  - Service Worker
+- JavaScript modules via script tag
+- IndexedDB
+- CloudFlare Worker
+  - ES Module
+- Tencent SCF
+- Javascript / Node Crypto
+- Pure JavaScript DOM basic operations
+
+
+TODO:
+- Use Vue or React.js
+  - In the non-simple business pure JavasScript processing DOM is still not as easy as the framework
+- Use UI Library for beautiful UI
+- WeChat Mini Program
