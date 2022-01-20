@@ -1,6 +1,6 @@
 const version = "0.0.6";
 const cacheName = `site-cache-v${version}`;
-const filesToCache = ["/"];
+const filesToCache = ["/", "https://unpkg.com/pwacompat"];
 
 self.addEventListener("install", (event) => {
   console.log("[ServiceWorker] Install");
