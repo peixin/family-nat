@@ -1,6 +1,6 @@
 {
   "name": "family-nat",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "index.html",
   "type": "module",
   "repository": "git@github.com:peixin/family-nat.git",
