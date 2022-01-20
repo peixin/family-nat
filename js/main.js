@@ -50,7 +50,7 @@ const getNATResult = async ({ name, id }) => {
 
     let responseData = await fetch(url, options).then((response) => response.json());
     if (typeof responseData !== "object") {
-      responseData = JSON.parse(body);
+      responseData = JSON.parse(responseData);
     }
     let message = name + "\n";
     console.log(responseData);
