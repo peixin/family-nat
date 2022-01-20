@@ -9,8 +9,8 @@ dotenv.config();
 // https://yqpt.xa.gov.cn/nrt/js/request-sign.min.js?y=202201170330
 // official why hardcode uuid? expose the private key on the client?
 // I had to hide it
-const UUID = process.env.UUID;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const NAAT_UUID = process.env.NAAT_UUID;
+const NAAT_PRIVATE_KEY = process.env.NAAT_PRIVATE_KEY;
 
 const parseResult = (_userName, { data }) => {
   const userName = _userName.padEnd(3, "　");
@@ -48,9 +48,9 @@ const getNATResult = async (userName, userId) => {
     cardNum: userId,
     driverName: "web",
     name: userName,
-    privateKey: PRIVATE_KEY,
+    privateKey: NAAT_PRIVATE_KEY,
     timestamp: timestamp,
-    uuid: UUID,
+    uuid: NAAT_UUID,
   };
 
   const signature = sign(
@@ -69,7 +69,7 @@ const getNATResult = async (userName, userId) => {
       Host: "yqpt.xa.gov.cn",
       driverName: "web",
       timestamp,
-      uuid: UUID,
+      uuid: NAAT_UUID,
       signature,
     },
     params: { name: userName, cardNum: userId },

@@ -2,8 +2,8 @@
 const request = require("request");
 const crypto = require("crypto");
 
-const UUID = process.env.UUID;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const NAAT_UUID = process.env.NAAT_UUID;
+const NAAT_PRIVATE_KEY = process.env.NAAT_PRIVATE_KEY;
 
 const sign = (text) => {
   const md5 = crypto.createHash("md5").update(text).digest("hex").substring(3, 28);
@@ -17,9 +17,9 @@ const getNATResult = async (userName, userId) => {
     cardNum: userId,
     driverName: "web",
     name: userName,
-    privateKey: PRIVATE_KEY,
+    privateKey: NAAT_PRIVATE_KEY,
     timestamp: timestamp,
-    uuid: UUID,
+    uuid: NAAT_UUID,
   };
 
   const signature = sign(
@@ -42,7 +42,7 @@ const getNATResult = async (userName, userId) => {
       Host: "yqpt.xa.gov.cn",
       driverName: "web",
       timestamp,
-      uuid: UUID,
+      uuid: NAAT_UUID,
       signature,
     },
   };
