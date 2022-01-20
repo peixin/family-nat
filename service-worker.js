@@ -1,4 +1,4 @@
-const version = "0.0.6";
+const version = "0.0.7";
 const cacheName = `site-cache-v${version}`;
 const filesToCache = ["/", "https://unpkg.com/pwacompat"];
 
