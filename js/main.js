@@ -13,7 +13,7 @@ const toEditFamily = (familyData) => {
   showEditFamily(familyData);
 };
 
-const getNATResult = async ({name, id}) => {
+const getNATResult = async ({ name, id }) => {
   let naatURL = localStorage.getItem("naat-api-url");
   let naatToken = localStorage.getItem("naat-api-token");
   let text = "";
@@ -26,7 +26,7 @@ const getNATResult = async ({name, id}) => {
     naatURL = text;
     localStorage.setItem("naat-api-url", text);
   }
-  if (!naatURL) {
+  if (!naatToken) {
     text = (prompt("输入你的 NAAT 代理 TOKEN:") || "").trim();
     if (!text) {
       alert("no nnat token");
@@ -48,18 +48,27 @@ const getNATResult = async ({name, id}) => {
     url.searchParams.set("name", name);
     url.searchParams.set("id", id);
 
-    const responseData = JSON.parse(await fetch(url, options).then((response) => response.json()));
+    let responseData = await fetch(url, options).then((response) => response.json());
+    if (typeof responseData !== "object") {
+      responseData = JSON.parse(body);
+    }
     let message = name + "\n";
     console.log(responseData);
 
-    message += responseData.data
-      .map((item) => `${item.collectTime} ${item.detResult === "1" ? "阴性" : `${item.detResult} 💥💥💥`}`)
-      .join("\n");
+    if (responseData.data && responseData.data.length) {
+      message += responseData.data
+        .map((item) => `${item.collectTime} ${item.detResult === "1" ? "阴性 👌" : `${item.detResult} 💥💥💥`}`)
+        .join("\n");
+    } else if (responseData.data) {
+      message += "最近没有核酸记录";
+    } else {
+      message += "API 返回错误\n" + JSON.stringify(responseData, null, 2);
+    }
 
     alert(message);
   } catch (error) {
     console.error(error);
-    alert(error);
+    alert(JSON.stringify(error, null, 2));
   }
 };
 
