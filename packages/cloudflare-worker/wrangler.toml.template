@@ -1,0 +1,11 @@
+name = ""
+account_id = ""
+type = "javascript"
+
+[build]
+command = "pnpm run build"
+
+[build.upload]
+format = "modules"
+dir = "./dist"
+main = "naat-result.mjs"

@@ -20,6 +20,9 @@ wrangler secret put API_TOKEN
 wrangler secret put NAAT_UUID
 wrangler secret put NAAT_PRIVATE_KEY
 
+
+cd packages/cloudflare-worker
+
 // cp & edit wrangler.toml
 cp wrangler.toml.template wrangler.toml
 
@@ -34,7 +37,7 @@ API_TOKEN=
 NAAT_PRIVATE_KEY=
 NAAT_UUID=
 ```
-Code: `tencent-scf/index.js`
+Code: `packages/tencent-scf/index.js`
 
 
 ## Environment Variables Description
@@ -74,6 +77,7 @@ Value: { id: "541560198001011452", imageB64Data: "data:image/jpeg;base64}
 
 ## Local bulk check results
 ```bash
+cd packages/cmd
 // cp & edit data.js
 cp data.js.template data.js
 
@@ -102,13 +106,13 @@ TODO:
 
 ## Storage Usage
 - Local Storage
-![Local Storage](./images/docs/local-storage.jpg)
+![Local Storage](./packages/client/images/docs/local-storage.jpg)
 - IndexedDB
-![IndexedDB](./images/docs/indexeddb.jpg)
+![IndexedDB](./packages/client/images/docs/indexeddb.jpg)
 - Cache Storage
-![Cache Storage](./images/docs/cache-storage.jpg)
+![Cache Storage](./packages/client/images/docs/cache-storage.jpg)
 
 
 ## Screenshot
-![show code](./images/docs/show-code.jpg)
-![edit family](./images/docs/edit-family.jpg)
+![show code](./packages/client/images/docs/show-code.jpg)
+![edit family](./packages/client/images/docs/edit-family.jpg)

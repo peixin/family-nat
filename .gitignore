@@ -195,9 +195,8 @@ dist
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
 qr-codes
-data.js
+packages/cmd/data.js
 # js/swiper-bundle.*
 # css/swiper-bundle.min.css
 
-cloudflare-worker/crypto-js
-wrangler.toml
+packages/cloudflare-worker/wrangler.toml

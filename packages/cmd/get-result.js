@@ -3,8 +3,12 @@ import axios from "axios";
 import crypto from "crypto";
 import { familyInfo } from "./data.js";
 import { fileURLToPath } from "url";
+import path from "path";
 
-dotenv.config();
+const _dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({
+  path: path.join(_dirname, ".env")
+});
 
 // https://yqpt.xa.gov.cn/nrt/js/request-sign.min.js?y=202201170330
 // official why hardcode uuid? expose the private key on the client?

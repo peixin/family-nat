@@ -1,4 +1,4 @@
-import CryptoJS from "./crypto-js/crypto-js.js";
+import CryptoJS from "crypto-js";
 
 async function sign(text) {
   // md5 & sha1 😮‍💨

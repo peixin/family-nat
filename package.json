@@ -1,8 +1,4 @@
 {
-  "name": "family-nat",
-  "version": "0.0.7",
-  "main": "index.html",
-  "type": "module",
   "repository": "git@github.com:peixin/family-nat.git",
   "author": "liupeixin <fengyi.mail@gmail.com>",
   "license": "MIT",
@@ -12,13 +8,12 @@
     "result": "node ./get-result.js",
     "build": "cp node_modules/swiper/swiper-bundle.esm.browser.min.* ./js; cp node_modules/swiper/swiper-bundle.min.css ./css"
   },
-  "devDependencies": {
-    "axios": "^0.24.0",
-    "crypto-js": "^4.1.1",
-    "dotenv": "^14.2.0",
-    "swiper": "^7.4.1"
-  },
   "engines": {
-    "node": ">=16"
+    "node": ">=16",
+    "pnpm": ">=6"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "esbuild": "^0.14.25"
   }
 }

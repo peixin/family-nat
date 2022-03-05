@@ -1,0 +1,12 @@
+{
+  "name": "@family-nat/client",
+  "version": "0.0.7",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build": "cp node_modules/swiper/swiper-bundle.esm.browser.min.* ./js; cp node_modules/swiper/swiper-bundle.min.css ./css"
+  },
+  "dependencies": {
+    "swiper": "^8.0.7"
+  }
+}
