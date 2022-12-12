@@ -1,3 +1,5 @@
+import "swiper";
+import 'swiper/css';
 import { init as initDB } from "./db.js";
 import { showEditFamily } from "./edit-family.js";
 import { showCode } from "./show-code.js";

@@ -3,11 +3,11 @@ import axios from "axios";
 import crypto from "crypto";
 import { familyInfo } from "./data.js";
 import { fileURLToPath } from "url";
-import path from "path";
+import path, { resolve } from "path";
 
 const _dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({
-  path: path.join(_dirname, ".env")
+  path: path.join(_dirname, ".env"),
 });
 
 // https://yqpt.xa.gov.cn/nrt/js/request-sign.min.js?y=202201170330
@@ -15,6 +15,10 @@ dotenv.config({
 // I had to hide it
 const NAAT_UUID = process.env.NAAT_UUID;
 const NAAT_PRIVATE_KEY = process.env.NAAT_PRIVATE_KEY;
+
+const delay = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve(), ms));
+};
 
 const parseResult = (_userName, { data }) => {
   const userName = _userName.padEnd(3, "　");
@@ -88,8 +92,14 @@ const getNATResult = async (userName, userId) => {
 };
 
 const main = async () => {
+  let random = Math.round(Math.random() * 10000);
+
   for (let user of Object.values(familyInfo)) {
     await getNATResult(user.name, user.id);
+
+    // if (random > 500) {
+      await delay(random);
+    // }
   }
 };
 

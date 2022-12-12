@@ -9,42 +9,32 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/ic_launcher_180.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/ic_launcher_32.png">
-  <script type="module">
-    // detect iOS Safari
-    if (('standalone' in navigator) && (!navigator.standalone)) {
-      import('https://unpkg.com/pwacompat');
-    }
-  </script>
+  <link ref="manifest" href="./manifest.json" />
+  <link ref="stylesheet" href="./css/style.css" />
   <script type="text/javascript">window.appVersion = "0.0.7"</script>
+  <script src="./js/app.js"></script>
   <script type="text/javascript">
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register('./service-worker.js')
-        .then(() => console.log('Service Worker Registered'))
-        .catch((err) => console.log('ServiceWorker registration failed:', err));
-    }
+    // const linkManifest = document.createElement("link")
+    // linkManifest.setAttribute("ref", "manifest")
+    // linkManifest.setAttribute("href", `./manifest.json?v=${appVersion}`)
+    // document.head.appendChild(linkManifest);
 
-    const linkManifest = document.createElement("link")
-    linkManifest.setAttribute("ref", "manifest")
-    linkManifest.setAttribute("href", `./manifest.json?v=${appVersion}`)
-    document.head.appendChild(linkManifest);
+    // const linkCssStyle = document.createElement("link")
+    // linkCssStyle.setAttribute("rel", "stylesheet")
+    // linkCssStyle.setAttribute("href", `./css/style.css?v=${appVersion}`)
+    // document.head.appendChild(linkCssStyle);
 
-    const linkCssStyle = document.createElement("link")
-    linkCssStyle.setAttribute("rel", "stylesheet")
-    linkCssStyle.setAttribute("href", `./css/style.css?v=${appVersion}`)
-    document.head.appendChild(linkCssStyle);
+    // const linkCssSwiper = document.createElement("link")
+    // linkCssSwiper.setAttribute("rel", "stylesheet")
+    // linkCssSwiper.setAttribute("href", `./css/swiper-bundle.min.css?v=${appVersion}`)
+    // document.head.appendChild(linkCssSwiper);
 
-    const linkCssSwiper = document.createElement("link")
-    linkCssSwiper.setAttribute("rel", "stylesheet")
-    linkCssSwiper.setAttribute("href", `./css/swiper-bundle.min.css?v=${appVersion}`)
-    document.head.appendChild(linkCssSwiper);
-
-    window.onload = () => {
-      const script = document.createElement("script")
-      script.setAttribute("type", "module")
-      script.setAttribute("src", `./js/main.js?v=${appVersion}`)
-      document.body.appendChild(script);
-    }
+    // window.onload = () => {
+    //   const script = document.createElement("script")
+    //   script.setAttribute("type", "module")
+    //   script.setAttribute("src", `./js/main.js?v=${appVersion}`)
+    //   document.body.appendChild(script);
+    // }
 
   </script>
   <title>家庭核酸检测亮码</title>
@@ -79,6 +69,7 @@
     </div>
     <div class="user-list"></div>
   </div>
+  <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>

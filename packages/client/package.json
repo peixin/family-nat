@@ -3,10 +3,15 @@
   "version": "0.0.7",
   "description": "",
   "main": "index.html",
+  "module": "module",
   "scripts": {
-    "build": "cp node_modules/swiper/swiper-bundle.esm.browser.min.* ./js; cp node_modules/swiper/swiper-bundle.min.css ./css"
+    "build2": "cp node_modules/swiper/swiper-bundle.esm.browser.min.* ./js; cp node_modules/swiper/swiper-bundle.min.css ./css",
+    "build": "esbuild js/main.js --asset-names=assets/[name]-[hash] --bundle --outdir=dist --splitting --format=esm --tree-shaking=true"
   },
   "dependencies": {
     "swiper": "^8.0.7"
+  },
+  "devDependencies": {
+    "@chialab/esbuild-plugin-html": "^0.15.6"
   }
 }

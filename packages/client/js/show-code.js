@@ -1,4 +1,4 @@
-import Swiper from "./swiper-bundle.esm.browser.min.js";
+import Swiper from "swiper";
 import { getData } from "./db.js";
 
 const formatReadableUserId = (userId) => {

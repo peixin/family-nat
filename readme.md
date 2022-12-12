@@ -106,13 +106,13 @@ TODO:
 
 ## Storage Usage
 - Local Storage
-![Local Storage](./packages/client/images/docs/local-storage.jpg)
+![Local Storage](./docs/local-storage.jpg)
 - IndexedDB
-![IndexedDB](./packages/client/images/docs/indexeddb.jpg)
+![IndexedDB](./docs/indexeddb.jpg)
 - Cache Storage
-![Cache Storage](./packages/client/images/docs/cache-storage.jpg)
+![Cache Storage](./docs/cache-storage.jpg)
 
 
 ## Screenshot
-![show code](./packages/client/images/docs/show-code.jpg)
-![edit family](./packages/client/images/docs/edit-family.jpg)
+![show code](./docs/show-code.jpg)
+![edit family](./docs/edit-family.jpg)
